@@ -115,7 +115,7 @@ in
                 ${if cfg.workspace.theme != null then "plasma-apply-desktoptheme ${cfg.workspace.theme} || success=0" else ""}
                 ${if cfg.workspace.cursorTheme != null then "plasma-apply-cursortheme ${cfg.workspace.cursorTheme} || success=0" else ""}
                 ${if cfg.workspace.colorScheme != null then "plasma-apply-colorscheme ${cfg.workspace.colorScheme} || success=0" else ""}
-                ${if cfg.workspace.iconTheme != null then "${pkgs.libsForQt5.plasma-workspace}/libexec/plasma-changeicons ${cfg.workspace.iconTheme} || success=0" else ""}
+                ${if cfg.workspace.iconTheme != null then "${(if cfg.plasma6 then pkgs.kdePackages else pkgs.libsForQt5).plasma-workspace}/libexec/plasma-changeicons ${cfg.workspace.iconTheme} || success=0" else ""}
                 [ $success -eq 1 ] && echo "$last_update" > "$last_update_file"
             fi
           '';

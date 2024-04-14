@@ -14,7 +14,12 @@
     ./apps
   ];
 
-  options.programs.plasma.enable = lib.mkEnableOption ''
-    Enable configuration management for KDE Plasma.
-  '';
+  options.programs.plasma = {
+    enable = lib.mkEnableOption ''
+      Enable configuration management for KDE Plasma.
+    '';
+    plasma6 = lib.mkEnableOption ''
+      Enable plasma6-specific internal logic.
+    '';
+  };
 }
